@@ -7,7 +7,7 @@ export interface WordEntry {
   etymology: string;
 }
 
-export const wordbank: WordEntry[] = [
+const _wordbank: WordEntry[] = [
   { word: "ABATE", length: 5, pos: "verb", definition: "To reduce in amount, degree, or intensity; to lessen or diminish.", example: "The storm began to abate after several hours, allowing rescue teams to reach the flooded areas.", etymology: "From Latin 'ad-' + 'battere' (to beat down)" },
   { word: "ABHOR", length: 5, pos: "verb", definition: "To regard with disgust and hatred; to detest strongly.", example: "She abhorred dishonesty and always insisted on complete transparency in her dealings.", etymology: "From Latin 'abhorrere' (to shrink back from)" },
   { word: "ABJURE", length: 6, pos: "verb", definition: "To formally reject or renounce a belief, claim, or course of action.", example: "The scientist abjured his earlier findings after new evidence contradicted his original conclusions.", etymology: "From Latin 'abjurare' (to deny on oath)" },
@@ -240,3 +240,5 @@ export const wordbank: WordEntry[] = [
   { word: "WIELD", length: 5, pos: "verb", definition: "To hold and use a weapon or tool; to have and exercise power or influence.", example: "The editor wielded considerable influence over public opinion during her tenure.", etymology: "From Old English 'wieldan' (to control)" },
   { word: "ZEALOUS", length: 7, pos: "adjective", definition: "Having or showing great energy or enthusiasm in pursuit of a cause.", example: "A zealous advocate for environmental protection, she lobbied tirelessly for stricter regulations.", etymology: "From Greek 'zelotes' (jealous imitator)" },
 ];
+
+export const wordbank = _wordbank.filter(w => w.length === 5 || w.length === 6);
