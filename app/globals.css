@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --bg2: #f9f9f9;
+  --correct: #6aaa64;
+  --present: #c9b458;
+  --absent: #787c7e;
+  --border-empty: #d3d6da;
+  --border-filled: #878a8c;
+  --text: #1a1a1b;
+  --key-bg: #d3d6da;
+  --key-text: #1a1a1b;
+  --header-border: #d3d6da;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* ── Tile flip animation ─────────────────────────────────── */
+.tile-reveal {
+  animation: tileFlip 0.5s ease forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes tileFlip {
+  0% {
+    transform: rotateX(0deg);
+    background-color: #ffffff;
+    border-color: var(--border-filled);
+    color: var(--text);
+  }
+  49% {
+    transform: rotateX(-90deg);
+    background-color: #ffffff;
+    border-color: var(--border-filled);
+    color: var(--text);
+  }
+  50% {
+    transform: rotateX(-90deg);
+    background-color: var(--tile-color, var(--absent));
+    border-color: var(--tile-color, var(--absent));
+    color: #ffffff;
+  }
+  100% {
+    transform: rotateX(0deg);
+    background-color: var(--tile-color, var(--absent));
+    border-color: var(--tile-color, var(--absent));
+    color: #ffffff;
+  }
+}
+
+/* ── Win bounce ──────────────────────────────────────────── */
+.tile-bounce {
+  animation: tileBounce 0.8s ease forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes tileBounce {
+  0%, 20% { transform: translateY(0); }
+  40%      { transform: translateY(-24px); }
+  50%      { transform: translateY(4px); }
+  60%      { transform: translateY(-12px); }
+  80%      { transform: translateY(2px); }
+  100%     { transform: translateY(0); }
+}
+
+/* ── Letter pop ──────────────────────────────────────────── */
+.tile-pop {
+  animation: tilePop 0.1s ease-in-out;
+}
+
+@keyframes tilePop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ── Row shake ───────────────────────────────────────────── */
+.row-shake {
+  animation: rowShake 0.5s ease-in-out;
+}
+
+@keyframes rowShake {
+  0%, 100%    { transform: translateX(0); }
+  10%, 50%, 90% { transform: translateX(-4px); }
+  30%, 70%    { transform: translateX(4px); }
+}
+
+/* ── Stats bar ───────────────────────────────────────────── */
+.bar-fill {
+  animation: barFill 0.6s ease-out forwards;
+  width: var(--bar-width);
+}
+
+@keyframes barFill {
+  from { width: 0; }
+  to   { width: var(--bar-width); }
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f9f9f9; }
+::-webkit-scrollbar-thumb { background: #d3d6da; border-radius: 3px; }
